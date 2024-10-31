@@ -1,7 +1,7 @@
 package Content;
 
 import Alert.UserAlert;
-import Input.FileSelector;
+import Input.*;
 import Screen.*;
 import Util.*;
 import java.awt.*;
@@ -17,11 +17,11 @@ public class HomeScreenContent extends JPanel{
 
     private JLabel          imageIcon;
 
-    private JLabel          labelFileSelector;
-    private FileSelector    fileSelector;
+    private JLabel                  labelFileSelector;
+    private FileSelectorImages      fileSelector;
     
-    private JLabel          labelFileSaver;
-    private FileSelector    fileSaver;
+    private JLabel                  labelFileSaver;
+    private FileSelectorSave        fileSaver;
 
     private JButton         buttonClean;
     private JButton         buttonInvertHorizontal;
@@ -101,11 +101,11 @@ public class HomeScreenContent extends JPanel{
 
         setLabelFileSelector(new JLabel("- CARREGAR IMAGEM -"));
 
-        setFileSelector(new FileSelector(205, new FileNameExtensionFilter("Imagens", "jpeg", "jpg"), "CARREGAR"));   
+        setFileSelector(new FileSelectorImages(205, new FileNameExtensionFilter("Imagens", "jpeg", "jpg")));   
         
         setLabelFileSaver(new JLabel("- SALVAR IMAGEM -"));
 
-        setFileSaver(new FileSelector(205, new FileNameExtensionFilter("Imagens", "jpeg"), "SALVAR"));  
+        setFileSaver(new FileSelectorSave(205, new FileNameExtensionFilter("Imagens", "jpeg"), fileSelector));  
 
         setButtonClean(new JButton("LIMPAR"));
 
@@ -169,7 +169,7 @@ public class HomeScreenContent extends JPanel{
         setButtonHistogramEqualized(new JButton("IMAGEM EQUALIZADA"));
 
         setLabelHistogramMatching(new JLabel("- HISTOGRAM MATCHING -"));
-        setFileSelectorHistogramMatching(new FileSelector(205, new FileNameExtensionFilter("Imagens", "jpeg", "jpg"), "CARREGAR_MATCHING", null));   
+        setFileSelectorHistogramMatching(new FileSelector(205, new FileNameExtensionFilter("Imagens", "jpeg", "jpg"), "CARREGAR_MATCHING"));   
     }
 
     private void configComponents(){
@@ -975,10 +975,10 @@ public class HomeScreenContent extends JPanel{
 
 
 
-    public FileSelector getFileSelector() {
+    public FileSelectorImages getFileSelector() {
         return fileSelector;
     }
-    public void setFileSelector(FileSelector fileSelector) {
+    public void setFileSelector(FileSelectorImages fileSelector) {
         this.fileSelector = fileSelector;
     }
 
@@ -993,10 +993,10 @@ public class HomeScreenContent extends JPanel{
     
 
 
-    public FileSelector getFileSaver() {
+    public FileSelectorSave getFileSaver() {
         return fileSaver;
     }
-    public void setFileSaver(FileSelector fileSaver) {
+    public void setFileSaver(FileSelectorSave fileSaver) {
         this.fileSaver = fileSaver;
     }
     

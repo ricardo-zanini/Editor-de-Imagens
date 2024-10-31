@@ -16,7 +16,6 @@ public class FileSelector extends JPanel{
     private String          fileContent;
     private File            file;
 
-    // Campo com tamanho e filtro
     public FileSelector(int textFieldWidth, FileNameExtensionFilter filter, String action){
 
         createComponents(action);
@@ -25,12 +24,25 @@ public class FileSelector extends JPanel{
 
     }
 
-    // Campo com tamanho
+    public FileSelector(int textFieldWidth, FileNameExtensionFilter filter){
+
+        createComponents(null);
+        configComponents(textFieldWidth, filter, null);
+        addComponents(null);
+    }
+
     public FileSelector(int textFieldWidth, String action){
 
         createComponents(action);
         configComponents(textFieldWidth, null, action);
         addComponents(action);
+    }
+
+    public FileSelector(int textFieldWidth){
+
+        createComponents(null);
+        configComponents(textFieldWidth, null, null);
+        addComponents(null);
     }
 
     private void createComponents(String action){
