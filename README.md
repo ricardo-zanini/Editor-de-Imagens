@@ -1,7 +1,8 @@
-## Projeto de Editor de Imagens para Fundamentos de Processamento de Imagens
+## Editor de Imagens - Fundamentos de Processamento de Imagens
+
+# Projetado em Java utilizando a biblioteca "Swing"
 
 - Inverte Imagens
-- Aplica Filtro de Cinza
-- Altera Luminância
-- Quantizaçã de Imagens
+- Aplicação de Filtro Cinza
+- Quantização de Imagens
 

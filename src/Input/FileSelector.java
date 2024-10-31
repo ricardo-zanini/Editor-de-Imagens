@@ -1,7 +1,7 @@
 package Input;
 
+import Alert.UserAlert;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.io.*;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -23,7 +23,6 @@ public class FileSelector extends JPanel{
         configComponents(textFieldWidth, filter, action);
         addComponents(action);
 
-        buttonFile.addActionListener(event -> eventSelectFile(event, action));
     }
 
     // Campo com tamanho
@@ -32,20 +31,17 @@ public class FileSelector extends JPanel{
         createComponents(action);
         configComponents(textFieldWidth, null, action);
         addComponents(action);
-
-
-        buttonFile.addActionListener(event -> eventSelectFile(event, action));
     }
 
-
     private void createComponents(String action){
-        ImageIcon imageIcon = new ImageIcon("img/fileIcon.png"); // load the image to a imageIcon
+        ImageIcon imageIcon = new ImageIcon("img/folder.png"); // load the image to a imageIcon
         Image image = imageIcon.getImage(); // transform it 
-        Image newimg = image.getScaledInstance(25, 25,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+        Image newimg = image.getScaledInstance(30, 30, 1); // scale it the smooth way  
 
         setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
         setButtonFile(new JButton("", new ImageIcon(newimg)));
 
+        setWindowFile(new JFileChooser());
         if(action != null)
             setButtonAction(new JButton(action));
 
@@ -53,33 +49,42 @@ public class FileSelector extends JPanel{
     }
     private void configComponents(int textFieldWidth, FileNameExtensionFilter filter, String action){
 
-        buttonFile.setBackground(new Color(216, 225, 240));
-        buttonFile.setBorder(new LineBorder(new Color(216, 225, 240),0));
+        setBackground(new Color(38,38,38));
+
+        try{
+            File fontStyle = new File("Fonts/pixelated_fancy_font.ttf");
+            Font font = Font.createFont(Font.TRUETYPE_FONT, fontStyle);
+            
+            buttonAction.setFont(font.deriveFont(12f));
+            fieldFile.setFont(font.deriveFont(12f));
+        }catch(Exception e){
+            UserAlert userAlert = new UserAlert("ERRO - Erro ao carregar Fonte"); 
+        }
+
+        buttonFile.setBackground(new Color(120, 90,148));
+        buttonFile.setBorder(new LineBorder(new Color(33, 33, 33),0));
         buttonFile.setMaximumSize(new Dimension(60, 40));
         buttonFile.setFocusable(false);
 
         if(action != null){
-            buttonAction.setBackground(new Color(216, 225, 240));
+            buttonAction.setBackground(new Color(120, 90,148));
             buttonAction.setBorder(new LineBorder(new Color(0, 0, 0),0));
-            buttonAction.setFont(new Font(null, Font.BOLD, 12));
             buttonAction.setMaximumSize(new Dimension(80, 40));
-            buttonAction.addActionListener(event -> eventButtonAction(event, action));
             buttonAction.setFocusable(false);
+            buttonAction.setForeground(Color.WHITE);
         }
 
-        fieldFile.setFont(new Font(null, Font.BOLD, 12));
-        fieldFile.setBackground(Color.white);
-        fieldFile.setBorder(new LineBorder(Color.white,10));
-        fieldFile.setMaximumSize(new Dimension(textFieldWidth, 40));
+        fieldFile.setBackground(new Color(33, 33, 33));
+        fieldFile.setBorder(new LineBorder(new Color(33, 33, 33),10));
+        fieldFile.setMaximumSize(new Dimension(textFieldWidth + (action != null ? 0 : 80), 40));
         fieldFile.setEditable(false);
         fieldFile.setFocusable(false);
         fieldFile.setForeground(new Color(204, 204, 204));
 
-        windowFile  = new JFileChooser();
         windowFile.setVisible(false);
         
         if(filter != null){
-            windowFile.addChoosableFileFilter(filter);
+            windowFile.setFileFilter(filter);
         }else{
             windowFile.setAcceptAllFileFilterUsed(false);
         }
@@ -92,14 +97,6 @@ public class FileSelector extends JPanel{
             add(buttonAction, BorderLayout.EAST);
         add(windowFile);
     }    
-
-    private void eventSelectFile(ActionEvent e, String filter){
-
-    }
-
-    private void eventButtonAction(ActionEvent e, String action){
-
-    }
 
     public JButton getButtonFile() {
         return buttonFile;
@@ -147,5 +144,6 @@ public class FileSelector extends JPanel{
     public void setFile(File file) {
         this.file = file;
     }
+
 
 }

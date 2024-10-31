@@ -1,101 +1,52 @@
 package Screen;
-import Input.FileSelector;
-import java.awt.*;
-import javax.swing.*;
-import javax.swing.filechooser.FileNameExtensionFilter;
+
+import Content.HomeScreenContent;
+import java.awt.Color;
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
 
 public class HomeScreen extends Screen{
 
-    private JLabel labelTitle;
-
-    private JLabel labelFileSelector;
-    private FileSelector fileSelector;
-    
-    private JLabel labelFileSaver;
-    private FileSelector fileSaver;
+    private HomeScreenContent homeScreenContent;
+    private JScrollPane jScrollPane;
 
     public HomeScreen(){
-        super("Tela Inicial");
+        super("Tela Inicial", 420, 650);
+
+        setLocation(20, 20);
         
         createComponents();
-        configComponents();
         addComponents();
         
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }
-
-    private void createComponents(){
-
-        setTitle("Menu"); 
-
-        setLabelFileSelector(new JLabel("- Carregar Imagem -"));
-
-        setFileSelector(new FileSelector(505, new FileNameExtensionFilter(".txt", "txt"), "Salvar"));       
-
-        setLabelTitle(new JLabel("- Editor de Imagens -"));          
-
-    }
-
-    private void configComponents(){
-        labelTitle.setBounds(175, 20, 400, 50);
-        labelTitle.setFont(new Font(null, Font.BOLD, 25));
-
-        //---------------------------------------------------------
-
-        labelFileSelector.setBounds(20, 60, 200, 50);
-        labelFileSelector.setFont(new Font(null, Font.BOLD, 15));
-
-        fileSelector.setBounds(20, 110, 545, 40);
-
-    }
-
-    private void addComponents(){
-
-        add(labelTitle);
-
-        add(labelFileSelector);     // Label do seletor
-        add(fileSelector);          // Seletor de Arquivos
+    
+    private void createComponents() {
+        setHomeScreenContent(new HomeScreenContent(0, 1500));
+        setJScrollPane(new JScrollPane(homeScreenContent));
     }
     
-    public JLabel getLabelTitle() {
-        return labelTitle;
-    }
-    public void setLabelTitle(JLabel labelTitle) {
-        this.labelTitle = labelTitle;
-    }
-
-
-    
-    public JLabel getLabelFileSelector() {
-        return labelFileSelector;
-    }
-    public void setLabelFileSelector(JLabel labelFileSelector) {
-        this.labelFileSelector = labelFileSelector;
+    private void addComponents() {
+        jScrollPane.setBounds(0, 0, 405, 615);
+        jScrollPane.setBackground(Color.BLACK);
+        jScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        jScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        add(jScrollPane);
+        
     }
 
-    public FileSelector getFileSelector() {
-        return fileSelector;
+    public HomeScreenContent getHomeScreenContent() {
+        return homeScreenContent;
     }
-    public void setFileSelector(FileSelector fileSelector) {
-        this.fileSelector = fileSelector;
+    public void setHomeScreenContent(HomeScreenContent homeScreenContent) {
+        this.homeScreenContent = homeScreenContent;
     }
 
-
-
-    public JLabel getLabelFileSaver() {
-        return labelFileSaver;
+    public JScrollPane getJScrollPane() {
+        return jScrollPane;
     }
-    public void setLabelFileSaver(JLabel labelFileSaver) {
-        this.labelFileSaver = labelFileSaver;
+    public void setJScrollPane(JScrollPane jScrollPane) {
+        this.jScrollPane = jScrollPane;
     }
-    
-    public FileSelector getFileSaver() {
-        return fileSaver;
-    }
-    public void setFileSaver(FileSelector fileSaver) {
-        this.fileSaver = fileSaver;
-    }
-    
-    
 }
