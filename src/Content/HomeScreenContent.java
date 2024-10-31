@@ -169,7 +169,7 @@ public class HomeScreenContent extends JPanel{
         setButtonHistogramEqualized(new JButton("IMAGEM EQUALIZADA"));
 
         setLabelHistogramMatching(new JLabel("- HISTOGRAM MATCHING -"));
-        setFileSelectorHistogramMatching(new FileSelector(205, new FileNameExtensionFilter("Imagens", "jpeg", "jpg"), "CARREGAR_MATCHING"));   
+        setFileSelectorHistogramMatching(new FileSelectorMatching(205, new FileNameExtensionFilter("Imagens", "jpeg", "jpg"), fileSelector));   
     }
 
     private void configComponents(){

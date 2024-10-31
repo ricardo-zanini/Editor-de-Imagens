@@ -13,8 +13,6 @@ public class FileSelector extends JPanel{
     private JButton         buttonAction;
     private JTextField      fieldFile;
     private JFileChooser    windowFile;
-    private String          fileContent;
-    private File            file;
 
     public FileSelector(int textFieldWidth, FileNameExtensionFilter filter, String action){
 
@@ -140,22 +138,5 @@ public class FileSelector extends JPanel{
     public void setWindowFile(JFileChooser windowFile) {
         this.windowFile = windowFile;
     }
-
-
-    public String getFileContent() {
-        return fileContent;
-    }
-    public void setFileContent(String fileContent) {
-        this.fileContent = fileContent;
-    }
-
-
-    public File getFile() {
-        return file;
-    }
-    public void setFile(File file) {
-        this.file = file;
-    }
-
 
 }

@@ -797,13 +797,13 @@ public class ImageFunctions{
     }
 
     public static BufferedImage imageHistogramMatchingMonochromatic(BufferedImage imageBufferSource, BufferedImage imageBufferTarget){
-        int[] histogramSourceCumulative = imageHistogramArray(imageBufferSource);
-        int[] histogramTargetCumulative = imageHistogramArray(imageBufferTarget);
+        int[] histogramSourceCumulative = imageNormalizedCumulativeHistogramArray(imageBufferSource);
+        int[] histogramTargetCumulative = imageNormalizedCumulativeHistogramArray(imageBufferTarget);
 
         int[] histogramMatching = new int[256];
 
         for(int i = 0; i < 256; i++){
-            histogramMatching[i] = findClosestInHistogram(histogramSourceCumulative, histogramTargetCumulative[i]);
+            histogramMatching[i] = findClosestInHistogram(histogramTargetCumulative, histogramSourceCumulative[i]);
         }
 
         int imageHeight = imageBufferSource.getHeight();
@@ -849,10 +849,12 @@ public class ImageFunctions{
     }
 
     public static int findClosestInHistogram(int[] histogram, int valueSearched){
-        int match = 10000;
+        int match = 0;
+        float lastOneDif = 255;
         for(int i = 0; i < histogram.length; i++){
-            if(histogram[i] - valueSearched < histogram[match] - valueSearched){
+            if(Math.abs(histogram[i] - valueSearched) < lastOneDif){
                 match = i;
+                lastOneDif = Math.abs(histogram[i] - valueSearched);
             }
         }
         return match;
