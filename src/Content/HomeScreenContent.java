@@ -86,7 +86,7 @@ public class HomeScreenContent extends JPanel{
 
         //setSize(width, height);
         setLayout(null);
-        setPreferredSize( new Dimension (400,2000 ) );
+        setPreferredSize( new Dimension (400,1880 ) );
         setBackground(new Color(38,38,38));
 
         createComponents();
@@ -254,7 +254,7 @@ public class HomeScreenContent extends JPanel{
         //---------------------------------------------------------
 
         buttonClean.setBounds(20, 310, 345, 40);
-        buttonClean.setBackground(new Color(120, 90,148));
+        buttonClean.setBackground(new Color(175, 62, 94));
         buttonClean.setBorder(new LineBorder(new Color(0, 0, 0),0));
         buttonClean.setFocusable(false);
         buttonClean.setForeground(Color.WHITE);

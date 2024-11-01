@@ -2,6 +2,7 @@ package Screen;
 
 import Alert.UserAlert;
 import Util.ImageFunctions;
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -85,6 +86,7 @@ public class ImageScreen extends Screen{
 
     public void refreshComponents(){
         getContentPane().removeAll();
+        getContentPane().setBackground(new Color(38,38,38));
 
         createComponents();
         addComponents();
