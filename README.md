@@ -1,6 +1,6 @@
-## Editor de Imagens - Fundamentos de Processamento de Imagens
+# Editor de Imagens - Fundamentos de Processamento de Imagens
 
-# Projetado em Java utilizando a biblioteca "Swing"
+### Projetado em Java utilizando a biblioteca "Swing"
 
 - Inverte Imagens
 - Aplicação de Filtro Cinza
